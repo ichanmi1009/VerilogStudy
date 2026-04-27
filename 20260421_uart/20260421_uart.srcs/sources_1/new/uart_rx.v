@@ -16,6 +16,7 @@ module uart_rx (
     reg [2:0] bit_cnt_reg, bit_cnt_next;
     reg [7:0] data_reg, data_next;  // 내부
     reg rx_done_reg, rx_done_next;
+    reg rx_syn1, rx_syn2;
 
 
     assign rx_done = rx_done_reg;
@@ -29,12 +30,16 @@ module uart_rx (
             bit_cnt_reg    <= 0;
             data_reg       <= 8'h00;
             rx_done_reg    <= 1'b0;
+            rx_syn1        <= 1'b1;
+            rx_syn2        <= 1'b1;
         end else begin
             c_state        <= n_state;
             b_tick_cnt_reg <= b_tick_cnt_next;
             bit_cnt_reg    <= bit_cnt_next;
             data_reg       <= data_next;
             rx_done_reg    <= rx_done_next;
+            rx_syn1        <= rx;
+            rx_syn2        <= rx_syn1;
         end
     end
 
@@ -48,7 +53,7 @@ module uart_rx (
         case (c_state)
             IDLE: begin
                 rx_done_next = 0;
-                if (b_tick && (!rx)) begin  //!rx도 가능, &도 가능
+                if (b_tick && (!rx_syn2)) begin  //!rx도 가능, &도 가능
                     b_tick_cnt_next = 0;
                     n_state         = START;
                 end
