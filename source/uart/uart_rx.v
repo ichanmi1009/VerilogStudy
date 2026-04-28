@@ -77,7 +77,6 @@ module uart_rx (
                         b_tick_cnt_next = 0;
                         if (bit_cnt_reg == 7) begin
                             b_tick_cnt_next = 0;
-                            bit_cnt_next = 0;  // 비트 카운트 초기화
                             n_state = STOP;
                         end else begin
                             bit_cnt_next = bit_cnt_reg + 1;
@@ -91,7 +90,7 @@ module uart_rx (
 
             STOP: begin
                 if (b_tick) begin
-                    if (b_tick_cnt_reg == (23) || ((b_tick_cnt_reg > 16) && !rx)) begin // 8바이트 이상 입력 시 깨지는 현상 방지, 23->15로 변경, 오류 감지되어 23돌고, rx가 1이되면 idle 상태로
+                    if (b_tick_cnt_reg == 22) begin
                         rx_done_next = 1'b1;
                         n_state = IDLE;
                     end else begin
