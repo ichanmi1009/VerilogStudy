@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_uart_loopback_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_uart_loopback" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="1252220000fs"></ZoomStartTime>
+      <ZoomEndTime time="2626220001fs"></ZoomEndTime>
+      <Cursor1Time time="2084220000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="180"></NameColumnWidth>
+      <ValueColumnWidth column_width="87"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="9" />
+   <wave_markers>
+      <marker time="1048155000" label="" />
+   </wave_markers>
+   <wvobject fp_name="/tb_uart_loopback/compare_data" type="array">
+      <obj_property name="ElementShortName">compare_data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">compare_data[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_uart_loopback/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_uart_loopback/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_uart_loopback/rx" type="logic">
+      <obj_property name="ElementShortName">rx</obj_property>
+      <obj_property name="ObjectShortName">rx</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_uart_loopback/tx" type="logic">
+      <obj_property name="ElementShortName">tx</obj_property>
+      <obj_property name="ObjectShortName">tx</obj_property>
+   </wvobject>
+   <wvobject fp_name="group121" type="group">
+      <obj_property name="label">UART_RX</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_RX/clk" type="logic">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_RX/rst" type="logic">
+         <obj_property name="ElementShortName">rst</obj_property>
+         <obj_property name="ObjectShortName">rst</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_RX/b_tick" type="logic">
+         <obj_property name="ElementShortName">b_tick</obj_property>
+         <obj_property name="ObjectShortName">b_tick</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_RX/rx" type="logic">
+         <obj_property name="ElementShortName">rx</obj_property>
+         <obj_property name="ObjectShortName">rx</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_RX/rx_data" type="array">
+         <obj_property name="ElementShortName">rx_data[7:0]</obj_property>
+         <obj_property name="ObjectShortName">rx_data[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_RX/rx_done" type="logic">
+         <obj_property name="ElementShortName">rx_done</obj_property>
+         <obj_property name="ObjectShortName">rx_done</obj_property>
+      </wvobject>
+      <wvobject fp_name="group146" type="group">
+         <obj_property name="label">rx_</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_RX/c_state" type="array">
+            <obj_property name="ElementShortName">c_state[1:0]</obj_property>
+            <obj_property name="ObjectShortName">c_state[1:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_RX/n_state" type="array">
+            <obj_property name="ElementShortName">n_state[1:0]</obj_property>
+            <obj_property name="ObjectShortName">n_state[1:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_RX/b_tick_cnt_reg" type="array">
+            <obj_property name="ElementShortName">b_tick_cnt_reg[4:0]</obj_property>
+            <obj_property name="ObjectShortName">b_tick_cnt_reg[4:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_RX/b_tick_cnt_next" type="array">
+            <obj_property name="ElementShortName">b_tick_cnt_next[4:0]</obj_property>
+            <obj_property name="ObjectShortName">b_tick_cnt_next[4:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_RX/bit_cnt_reg" type="array">
+            <obj_property name="ElementShortName">bit_cnt_reg[2:0]</obj_property>
+            <obj_property name="ObjectShortName">bit_cnt_reg[2:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_RX/bit_cnt_next" type="array">
+            <obj_property name="ElementShortName">bit_cnt_next[2:0]</obj_property>
+            <obj_property name="ObjectShortName">bit_cnt_next[2:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_RX/data_reg" type="array">
+            <obj_property name="ElementShortName">data_reg[7:0]</obj_property>
+            <obj_property name="ObjectShortName">data_reg[7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_RX/data_next" type="array">
+            <obj_property name="ElementShortName">data_next[7:0]</obj_property>
+            <obj_property name="ObjectShortName">data_next[7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_RX/rx_done_reg" type="logic">
+            <obj_property name="ElementShortName">rx_done_reg</obj_property>
+            <obj_property name="ObjectShortName">rx_done_reg</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_RX/rx_done_next" type="logic">
+            <obj_property name="ElementShortName">rx_done_next</obj_property>
+            <obj_property name="ObjectShortName">rx_done_next</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_RX/rx_syn1" type="logic">
+            <obj_property name="ElementShortName">rx_syn1</obj_property>
+            <obj_property name="ObjectShortName">rx_syn1</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_RX/rx_syn2" type="logic">
+            <obj_property name="ElementShortName">rx_syn2</obj_property>
+            <obj_property name="ObjectShortName">rx_syn2</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_RX/IDLE" type="array">
+            <obj_property name="ElementShortName">IDLE[31:0]</obj_property>
+            <obj_property name="ObjectShortName">IDLE[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_RX/START" type="array">
+            <obj_property name="ElementShortName">START[31:0]</obj_property>
+            <obj_property name="ObjectShortName">START[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_RX/DATA" type="array">
+            <obj_property name="ElementShortName">DATA[31:0]</obj_property>
+            <obj_property name="ObjectShortName">DATA[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_RX/STOP" type="array">
+            <obj_property name="ElementShortName">STOP[31:0]</obj_property>
+            <obj_property name="ObjectShortName">STOP[31:0]</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group85" type="group">
+      <obj_property name="label">FIFO_RX</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_FIFO_RX/clk" type="logic">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_FIFO_RX/rst" type="logic">
+         <obj_property name="ElementShortName">rst</obj_property>
+         <obj_property name="ObjectShortName">rst</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_FIFO_RX/push_data" type="array">
+         <obj_property name="ElementShortName">push_data[7:0]</obj_property>
+         <obj_property name="ObjectShortName">push_data[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_FIFO_RX/push" type="logic">
+         <obj_property name="ElementShortName">push</obj_property>
+         <obj_property name="ObjectShortName">push</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_FIFO_RX/pop" type="logic">
+         <obj_property name="ElementShortName">pop</obj_property>
+         <obj_property name="ObjectShortName">pop</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_FIFO_RX/pop_data" type="array">
+         <obj_property name="ElementShortName">pop_data[7:0]</obj_property>
+         <obj_property name="ObjectShortName">pop_data[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_FIFO_RX/empty" type="logic">
+         <obj_property name="ElementShortName">empty</obj_property>
+         <obj_property name="ObjectShortName">empty</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_FIFO_RX/U_REG_FILE/register_file" type="array">
+         <obj_property name="ElementShortName">register_file[0:3][7:0]</obj_property>
+         <obj_property name="ObjectShortName">register_file[0:3][7:0]</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_FIFO_RX/full" type="logic">
+         <obj_property name="ElementShortName">full</obj_property>
+         <obj_property name="ObjectShortName">full</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_FIFO_RX/w_wptr" type="array">
+         <obj_property name="ElementShortName">w_wptr[1:0]</obj_property>
+         <obj_property name="ObjectShortName">w_wptr[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_FIFO_RX/w_rptr" type="array">
+         <obj_property name="ElementShortName">w_rptr[1:0]</obj_property>
+         <obj_property name="ObjectShortName">w_rptr[1:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group98" type="group">
+      <obj_property name="label">FIFO_TX</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_FIFO_TX/clk" type="logic">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_FIFO_TX/rst" type="logic">
+         <obj_property name="ElementShortName">rst</obj_property>
+         <obj_property name="ObjectShortName">rst</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_FIFO_TX/push_data" type="array">
+         <obj_property name="ElementShortName">push_data[7:0]</obj_property>
+         <obj_property name="ObjectShortName">push_data[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_FIFO_TX/push" type="logic">
+         <obj_property name="ElementShortName">push</obj_property>
+         <obj_property name="ObjectShortName">push</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_FIFO_TX/pop" type="logic">
+         <obj_property name="ElementShortName">pop</obj_property>
+         <obj_property name="ObjectShortName">pop</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_FIFO_TX/pop_data" type="array">
+         <obj_property name="ElementShortName">pop_data[7:0]</obj_property>
+         <obj_property name="ObjectShortName">pop_data[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_FIFO_TX/full" type="logic">
+         <obj_property name="ElementShortName">full</obj_property>
+         <obj_property name="ObjectShortName">full</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_FIFO_TX/empty" type="logic">
+         <obj_property name="ElementShortName">empty</obj_property>
+         <obj_property name="ObjectShortName">empty</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_FIFO_TX/w_wptr" type="array">
+         <obj_property name="ElementShortName">w_wptr[1:0]</obj_property>
+         <obj_property name="ObjectShortName">w_wptr[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_FIFO_TX/w_rptr" type="array">
+         <obj_property name="ElementShortName">w_rptr[1:0]</obj_property>
+         <obj_property name="ObjectShortName">w_rptr[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_FIFO_TX/U_REG_FILE/register_file" type="array">
+         <obj_property name="ElementShortName">register_file[0:3][7:0]</obj_property>
+         <obj_property name="ObjectShortName">register_file[0:3][7:0]</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group145" type="group">
+      <obj_property name="label">UART_TX</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_TX/clk" type="logic">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_TX/rst" type="logic">
+         <obj_property name="ElementShortName">rst</obj_property>
+         <obj_property name="ObjectShortName">rst</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_TX/tx_start" type="logic">
+         <obj_property name="ElementShortName">tx_start</obj_property>
+         <obj_property name="ObjectShortName">tx_start</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_TX/tx_data" type="array">
+         <obj_property name="ElementShortName">tx_data[7:0]</obj_property>
+         <obj_property name="ObjectShortName">tx_data[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_TX/b_tick" type="logic">
+         <obj_property name="ElementShortName">b_tick</obj_property>
+         <obj_property name="ObjectShortName">b_tick</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_TX/tx" type="logic">
+         <obj_property name="ElementShortName">tx</obj_property>
+         <obj_property name="ObjectShortName">tx</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_TX/tx_busy" type="logic">
+         <obj_property name="ElementShortName">tx_busy</obj_property>
+         <obj_property name="ObjectShortName">tx_busy</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_TX/c_state" type="array">
+         <obj_property name="ElementShortName">c_state[2:0]</obj_property>
+         <obj_property name="ObjectShortName">c_state[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_TX/n_state" type="array">
+         <obj_property name="ElementShortName">n_state[2:0]</obj_property>
+         <obj_property name="ObjectShortName">n_state[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_TX/tx_reg" type="logic">
+         <obj_property name="ElementShortName">tx_reg</obj_property>
+         <obj_property name="ObjectShortName">tx_reg</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_TX/tx_next" type="logic">
+         <obj_property name="ElementShortName">tx_next</obj_property>
+         <obj_property name="ObjectShortName">tx_next</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_TX/data_reg" type="array">
+         <obj_property name="ElementShortName">data_reg[7:0]</obj_property>
+         <obj_property name="ObjectShortName">data_reg[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_TX/data_next" type="array">
+         <obj_property name="ElementShortName">data_next[7:0]</obj_property>
+         <obj_property name="ObjectShortName">data_next[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_TX/bit_cnt_reg" type="array">
+         <obj_property name="ElementShortName">bit_cnt_reg[2:0]</obj_property>
+         <obj_property name="ObjectShortName">bit_cnt_reg[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_TX/bit_cnt_next" type="array">
+         <obj_property name="ElementShortName">bit_cnt_next[2:0]</obj_property>
+         <obj_property name="ObjectShortName">bit_cnt_next[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_TX/b_tick_cnt_reg" type="array">
+         <obj_property name="ElementShortName">b_tick_cnt_reg[3:0]</obj_property>
+         <obj_property name="ObjectShortName">b_tick_cnt_reg[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_TX/b_tick_cnt_next" type="array">
+         <obj_property name="ElementShortName">b_tick_cnt_next[3:0]</obj_property>
+         <obj_property name="ObjectShortName">b_tick_cnt_next[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_TX/tx_busy_reg" type="logic">
+         <obj_property name="ElementShortName">tx_busy_reg</obj_property>
+         <obj_property name="ObjectShortName">tx_busy_reg</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_TX/tx_busy_next" type="logic">
+         <obj_property name="ElementShortName">tx_busy_next</obj_property>
+         <obj_property name="ObjectShortName">tx_busy_next</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_TX/IDLE" type="array">
+         <obj_property name="ElementShortName">IDLE[31:0]</obj_property>
+         <obj_property name="ObjectShortName">IDLE[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_TX/START" type="array">
+         <obj_property name="ElementShortName">START[31:0]</obj_property>
+         <obj_property name="ObjectShortName">START[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_TX/DATA" type="array">
+         <obj_property name="ElementShortName">DATA[31:0]</obj_property>
+         <obj_property name="ObjectShortName">DATA[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_uart_loopback/dut/U_UART_TOP/U_UART_TX/STOP" type="array">
+         <obj_property name="ElementShortName">STOP[31:0]</obj_property>
+         <obj_property name="ObjectShortName">STOP[31:0]</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

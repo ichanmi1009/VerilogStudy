@@ -2,7 +2,7 @@
 
 module tb_uart_loopback ();
 
-    parameter BAUD_DELAY = 2000;  //10us 한틱 정도 빨라짐 너무 빨라져서 2000n로 수정
+    parameter BAUD_DELAY = 0;  //10us 한틱 정도 빨라짐 너무 빨라져서 2000n로 수정
     parameter BAUD_PERIOD = (100_000_000 / 9600) * 10 - BAUD_DELAY;  //한클럭 10n, 빠르게 하려고 - 뒤에 추가
 
     reg [7:0] compare_data;
@@ -10,7 +10,7 @@ module tb_uart_loopback ();
     reg clk, rst, rx;
     wire tx;
 
-    uart_loopback dut (
+    uart_fifo_loopback dut (
         .clk(clk),
         .rst(rst),
         .rx (rx),
@@ -52,22 +52,19 @@ module tb_uart_loopback ();
 
         rst = 0;
         SENDER_UART(compare_data);
-        SENDER_UART(compare_data);
-        SENDER_UART(compare_data);
-        SENDER_UART(compare_data);
-        SENDER_UART(compare_data);
-        SENDER_UART(compare_data);
-        SENDER_UART(compare_data);
-        SENDER_UART(compare_data);
-        SENDER_UART(compare_data);
-        SENDER_UART(compare_data);
-        SENDER_UART(compare_data);
+        // SENDER_UART(compare_data);
+        // SENDER_UART(compare_data);
+        // SENDER_UART(compare_data);
+        // SENDER_UART(compare_data);
+        // SENDER_UART(compare_data);
+        // SENDER_UART(compare_data);
+        // SENDER_UART(compare_data);
+        // SENDER_UART(compare_data);
+        // SENDER_UART(compare_data);
+        // SENDER_UART(compare_data);
 
         #(BAUD_PERIOD * 10);
         #1000;
         $stop;
-
     end
-
-
 endmodule

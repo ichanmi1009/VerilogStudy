@@ -30,16 +30,12 @@ module uart_rx (
             bit_cnt_reg    <= 0;
             data_reg       <= 8'h00;
             rx_done_reg    <= 1'b0;
-            rx_syn1        <= 1'b1;
-            rx_syn2        <= 1'b1;
         end else begin
             c_state        <= n_state;
             b_tick_cnt_reg <= b_tick_cnt_next;
             bit_cnt_reg    <= bit_cnt_next;
             data_reg       <= data_next;
             rx_done_reg    <= rx_done_next;
-            rx_syn1        <= rx;
-            rx_syn2        <= rx_syn1;
         end
     end
 
@@ -53,7 +49,7 @@ module uart_rx (
         case (c_state)
             IDLE: begin
                 rx_done_next = 0;
-                if (b_tick && (!rx_syn2)) begin  //!rx도 가능, &도 가능
+                if (b_tick && (!rx)) begin  //!rx도 가능, &도 가능
                     b_tick_cnt_next = 0;
                     n_state         = START;
                 end
@@ -91,7 +87,7 @@ module uart_rx (
 
             STOP: begin
                 if (b_tick) begin
-                    if (b_tick_cnt_reg == 15) begin //|| ((b_tick_cnt_reg > 16) && !rx_syn2)) begin // 8바이트 이상 입력 시 깨지는 현상 방지, 23->15로 변경, 오류 감지되어 23돌고, rx가 1이되면 idle 상태로
+                    if ((b_tick_cnt_reg == 23) || ((b_tick_cnt_reg > 16) && !rx)) begin // 8바이트 이상 입력 시 깨지는 현상 방지, 23->15로 변경, 오류 감지되어 23돌고, rx가 1이되면 idle 상태로
                         rx_done_next = 1'b1;
                         n_state = IDLE;
                     end else begin
