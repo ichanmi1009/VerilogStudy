@@ -7,7 +7,7 @@ module button_debounce (
     output o_btn
 );
     // clock devider
-    // 100Mhz -> 100KHz // 10HZ 한주기 0.1초 100 0.01초 // 시뮬레이션 용으로 10HZ 사용
+    // 100Mhz -> 100KHz // 10MHZ 한주기 0.1초 100 0.01초 // 시뮬레이션 용으로 10MHZ 사용
     parameter F_COUNT = 100000000 / 100000;
     reg [$clog2(F_COUNT)-1:0] r_counter;
     reg clk_100khz;

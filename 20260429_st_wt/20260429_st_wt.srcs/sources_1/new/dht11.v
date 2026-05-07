@@ -1,46 +1,30 @@
 `timescale 1ns / 1ps
 
 module dht11 (
-    input        clk,
-    input        rst,
-    input        btn_R,
-    output [3:0] fnd_com,
-    output [7:0] fnd_data,
-    output       led,
-    inout        dht11
+    input clk,
+    input rst,
+    input [3:0] dht_btn,
+    output led,
+    output [7:0] hm,
+    output [7:0] tm,
+    inout dht11
 );
-    wire w_btn_R, w_tick_us, w_valid;
+    wire w_tick_us, w_valid;
     assign led = w_valid;
-    wire [7:0] w_hm, w_tm;
 
     dht11_controller U_DHT11_CNTL (
         .clk        (clk),
         .rst        (rst),
-        .dht11_start(w_btn_R),
+        .dht11_start(dht_btn[0]),
         .tick_us    (w_tick_us),
-        .humidity   (w_hm),
-        .temperature(w_tm),
-        .valid      (w_valid),    // for check sum valid가 1이면 led 킴
+        .humidity   (hm),
+        .temperature(tm),
+        .valid      (w_valid),     // for check sum valid가 1이면 led 킴
         .dht11      (dht11)
     );
 
-    fnd_controller_sensor U_FND_CNTL (
-        .clk(clk),
-        .rst(rst),
-        .hm(w_hm),
-        .tm(w_tm),
-        .fnd_com(fnd_com),
-        .fnd_data(fnd_data)
-    );
 
-    button_debounce U_BUTTON_DEBOUNCE (
-        .clk  (clk),
-        .rst  (rst),
-        .i_btn(btn_R),
-        .o_btn(w_btn_R)
-    );
-
-    tick_gen_us U_TICK_GEN_US (
+    tick_gen_us_dht11 U_TICK_GEN_US (
         .clk(clk),
         .rst(rst),
         .tick_us(w_tick_us)
@@ -67,16 +51,18 @@ module dht11_controller (
     reg [5:0] bit_cnt_reg, bit_cnt_next;
     reg [$clog2(19_000)-1:0] tick_cnt_reg, tick_cnt_next;  // general tick count
     reg out_sel_reg, out_sel_next;  //dht11 io 3state control
-    reg dht11_reg, dht11_next;  // dht11 output drive
+    reg dht11_sync1, dht11_sync2, dht11_reg, dht11_next;  // dht11 output drive
     reg [39:0] data_reg, data_next;  //데이터 레지스터 40비트 추가
+    reg [7:0]
+        hm_reg, tm_reg;  // 깜빡거리는 문제 해결하기 위해 추가
 
     // dht output 3state control
     assign dht11 = (out_sel_reg) ? dht11_reg : 1'bz;
 
-    assign valid = (data_reg[7:0] == (data_reg[39:32] + data_reg[31:24] + data_reg[23:16] + data_reg[15:8])) ? 1:0; // 체크SUM
+    assign valid = (c_state == STOP) && (data_reg[7:0] == (data_reg[39:32] + data_reg[31:24] + data_reg[23:16] + data_reg[15:8])) ? 1:0; // 체크SUM
 
-    assign humidity = data_reg[39:32];
-    assign temperature = data_reg[23:16];
+    assign humidity = hm_reg;  //data_reg[39:32]
+    assign temperature = tm_reg;  //data_reg[23:16]
     //checksum 조건문 걸어서 추가 필요
     //싱크로나이저 추가
 
@@ -87,15 +73,25 @@ module dht11_controller (
             tick_cnt_reg <= 0;
             out_sel_reg  <= 1'b1;  // default output mode
             dht11_reg    <= 1'b1;  // default high state IDLE일때 1
+            dht11_sync1  <= 1'b1;
+            dht11_sync2  <= 1'b1;
             data_reg     <= 0;
+            hm_reg       <= 0;  //깜빡거리는 문제 해결
+            tm_reg       <= 0;
+
         end else begin
             c_state      <= n_state;
             bit_cnt_reg  <= bit_cnt_next;
             tick_cnt_reg <= tick_cnt_next;
             out_sel_reg  <= out_sel_next;  // when idle dht11 output mode
             dht11_reg    <= dht11_next;
+            dht11_sync1  <= dht11;
+            dht11_sync2  <= dht11_sync1;
             data_reg     <= data_next;  //check
-
+            if (valid) begin
+                hm_reg <= data_reg[39:32];
+                tm_reg <= data_reg[23:16];
+            end
         end
     end
 
@@ -119,7 +115,7 @@ module dht11_controller (
             START: begin
                 dht11_next = 1'b0;
                 if (tick_us) begin
-                    if (tick_cnt_reg > 19_000) begin  // 19000?19msec라서
+                    if (tick_cnt_reg >= 19_000) begin  // 19000?19msec라서
                         tick_cnt_next = 0;
                         n_state = WAIT;
                     end else begin
@@ -130,7 +126,7 @@ module dht11_controller (
             WAIT: begin
                 dht11_next = 1'b1;
                 if (tick_us) begin
-                    if (tick_cnt_reg > 30) begin  // 
+                    if (tick_cnt_reg >= 30) begin  // 
                         tick_cnt_next = 0;
                         n_state = SYNCL;
                     end else begin
@@ -142,7 +138,7 @@ module dht11_controller (
                 // output is high impedance "z"
                 out_sel_next = 1'b0;  // 출력 끊음
                 if (tick_us) begin
-                    if ((tick_cnt_reg > 40) && (dht11)) begin
+                    if ((tick_cnt_reg > 40) && (dht11_sync2)) begin
                         tick_cnt_next = 0;
                         n_state = SYNCH;
                     end else begin
@@ -152,7 +148,7 @@ module dht11_controller (
             end
             SYNCH: begin
                 if (tick_us) begin
-                    if ((tick_cnt_reg > 40) && (!dht11)) begin
+                    if ((tick_cnt_reg > 40) && (!dht11_sync2)) begin
                         tick_cnt_next = 0;
                         n_state = DATA_SYNC;
                     end else begin
@@ -162,7 +158,7 @@ module dht11_controller (
             end
             DATA_SYNC: begin
                 if (tick_us) begin
-                    if (dht11) begin
+                    if (dht11_sync2) begin
                         tick_cnt_next = 0;
                         n_state = DATA_COUNT;
                     end else begin
@@ -172,7 +168,7 @@ module dht11_controller (
             end
             DATA_COUNT: begin
                 if (tick_us) begin
-                    if (!dht11) begin
+                    if (!dht11_sync2) begin
                         n_state = DATA_DECISION;
                     end else begin
                         tick_cnt_next = tick_cnt_reg + 1;
@@ -189,7 +185,8 @@ module dht11_controller (
                     tick_cnt_next = 0;
                 end
                 bit_cnt_next = bit_cnt_reg + 1;
-                if (bit_cnt_reg == 39) begin
+
+                if (bit_cnt_reg >= 39) begin
                     n_state = STOP;
                 end else begin
                     n_state = DATA_SYNC;
@@ -197,7 +194,7 @@ module dht11_controller (
             end
             STOP: begin
                 if (tick_us) begin
-                    if (tick_cnt_reg > 50) begin
+                    if (tick_cnt_reg >= 50) begin
                         tick_cnt_next = 0;
                         n_state = IDLE;
                     end else begin
@@ -214,7 +211,7 @@ endmodule
 
 
 
-module tick_gen_us (
+module tick_gen_us_dht11 (
     input      clk,
     input      rst,
     output reg tick_us

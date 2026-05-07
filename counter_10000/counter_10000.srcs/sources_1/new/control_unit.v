@@ -6,7 +6,7 @@ module control_unit (
     input i_mode,
     input i_clear,
     input i_run_stop,
-    input i_btnu,  // re-define
+    // input i_btnu,  // re-define
     input [2:0] sw,
     output wire o_mode,  // assign문
     output reg o_clear,
@@ -44,7 +44,6 @@ module control_unit (
             STOP: begin
                 o_run_stop = 1'b0;
                 o_clear = 1'b0;
-
                 if (i_run_stop) begin
                     n_state = RUN;
                 end else if (i_clear) begin

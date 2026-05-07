@@ -73,7 +73,7 @@ module uart_rx (
             DATA: begin
                 if (b_tick) begin
                     if (b_tick_cnt_reg == 15) begin
-                        data_next = {rx, data_reg[7:1]};
+                        data_next = {rx_syn2, data_reg[7:1]};
                         b_tick_cnt_next = 0;
                         if (bit_cnt_reg == 7) begin
                             b_tick_cnt_next = 0;
@@ -91,7 +91,7 @@ module uart_rx (
 
             STOP: begin
                 if (b_tick) begin
-                    if (b_tick_cnt_reg == 15) begin //|| ((b_tick_cnt_reg > 16) && !rx_syn2)) begin // 8바이트 이상 입력 시 깨지는 현상 방지, 23->15로 변경, 오류 감지되어 23돌고, rx가 1이되면 idle 상태로
+                    if ((b_tick_cnt_reg == 23) || ((b_tick_cnt_reg > 16) && !rx_syn2)) begin // 8바이트 이상 입력 시 깨지는 현상 방지, 23->15로 변경, 오류 감지되어 23돌고, rx가 1이되면 idle 상태로
                         rx_done_next = 1'b1;
                         n_state = IDLE;
                     end else begin

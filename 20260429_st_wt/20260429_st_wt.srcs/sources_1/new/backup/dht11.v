@@ -1,44 +1,28 @@
 `timescale 1ns / 1ps
 
 module dht11 (
-    input        clk,
-    input        rst,
-    input        btn_R,
-    output [3:0] fnd_com,
-    output [7:0] fnd_data,
-    output       led,
-    inout        dht11
+    input clk,
+    input rst,
+    input btn_R,
+    output led,
+    output [7:0] hm,
+    output [7:0] tm,
+    inout dht11
 );
     wire w_btn_R, w_tick_us, w_valid;
-    assign led = w_valid;
-    wire [7:0] w_hm, w_tm;
+    assign led = valid;
 
     dht11_controller U_DHT11_CNTL (
         .clk        (clk),
         .rst        (rst),
-        .dht11_start(w_btn_R),
+        .dht11_start(btn_R),
         .tick_us    (w_tick_us),
-        .humidity   (w_hm),
-        .temperature(w_tm),
-        .valid      (w_valid),    // for check sum valid가 1이면 led 킴
+        .humidity   (hm),
+        .temperature(tm),
+        .valid      (valid),      // for check sum valid가 1이면 led 킴
         .dht11      (dht11)
     );
 
-    fnd_controller_sensor U_FND_CNTL (
-        .clk(clk),
-        .rst(rst),
-        .hm(w_hm),
-        .tm(w_tm),
-        .fnd_com(fnd_com),
-        .fnd_data(fnd_data)
-    );
-
-    button_debounce U_BUTTON_DEBOUNCE (
-        .clk  (clk),
-        .rst  (rst),
-        .i_btn(btn_R),
-        .o_btn(w_btn_R)
-    );
 
     tick_gen_us U_TICK_GEN_US (
         .clk(clk),

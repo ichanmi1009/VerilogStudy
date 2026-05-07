@@ -75,6 +75,7 @@ module datapath (
     input i_mode,
     output [13:0] tick_counter
 );
+    wire w_tick_10hz;
 
     tick_counter U_TICK_COUNTER (
         .clk(clk),
@@ -122,8 +123,8 @@ module tick_counter (
                     end
                 end else begin  //up count
                     tick_counter_reg <= tick_counter_reg - 1;
-                    if (tick_counter_reg == (0)) begin
-                        tick_counter_reg <= 9999;
+                    if (tick_counter_reg == 0) begin
+                        tick_counter_reg <= 14'd9999;
                     end
 
                 end
