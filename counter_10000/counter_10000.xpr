@@ -88,8 +88,10 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../20260407_halfadder/20260407_halfadder.srcs/sources_1/new/fnd_controller.v">
+      <File Path="$PSRCDIR/sources_1/imports/new/fnd_controller.v">
         <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../20260407_halfadder/20260407_halfadder.srcs/sources_1/new/fnd_controller.v"/>
+          <Attr Name="ImportTime" Val="1776241995"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -152,8 +154,10 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/tb_datapath_behav.wcfg">
+      <File Path="$PSRCDIR/sim_1/imports/counter_10000/tb_datapath_behav.wcfg">
         <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/tb_datapath_behav.wcfg"/>
+          <Attr Name="ImportTime" Val="1775722290"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
